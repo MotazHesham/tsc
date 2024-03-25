@@ -25,10 +25,34 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.client.fields.user') }}
+                            {{ trans('cruds.user.fields.name') }}
                         </th>
                         <td>
                             {{ $client->user->name ?? '' }}
+                        </td>
+                    </tr> 
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.email') }}
+                        </th>
+                        <td>
+                            {{ $client->user->email }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.approved') }}
+                        </th>
+                        <td>
+                            <input type="checkbox" disabled="disabled" {{ $client->user->approved ? 'checked' : '' }}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.phone_number') }}
+                        </th>
+                        <td>
+                            {{ $client->user->phone_number }}
                         </td>
                     </tr>
                 </tbody>

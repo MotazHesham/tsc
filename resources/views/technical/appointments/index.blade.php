@@ -1,0 +1,95 @@
+@extends('layouts.technical')
+@section('content') 
+    <div class="card">
+        <div class="card-header">
+            {{ trans('cruds.appointment.title_singular') }} {{ trans('global.list') }}
+        </div>
+
+        <div class="card-body">
+            <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Appointment">
+                <thead>
+                    <tr>
+                        <th width="10">
+
+                        </th>
+                        <th>
+                            {{ trans('cruds.appointment.fields.id') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.appointment.fields.date') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.appointment.fields.time') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.appointment.fields.title') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.appointment.fields.contract') }}
+                        </th> 
+                        <th>
+                            &nbsp;
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+@endsection
+@section('scripts')
+    @parent
+    <script>
+        $(function() {
+            let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons) 
+
+            let dtOverrideGlobals = {
+                buttons: dtButtons,
+                processing: true,
+                serverSide: true,
+                retrieve: true,
+                aaSorting: [],
+                ajax: "{{ route('technical.appointments.index') }}",
+                columns: [{
+                        data: 'placeholder',
+                        name: 'placeholder'
+                    },
+                    {
+                        data: 'id',
+                        name: 'id'
+                    },
+                    {
+                        data: 'date',
+                        name: 'date'
+                    },
+                    {
+                        data: 'time',
+                        name: 'time'
+                    },
+                    {
+                        data: 'title',
+                        name: 'title'
+                    },
+                    {
+                        data: 'contract_name',
+                        name: 'contract.name'
+                    }, 
+                    {
+                        data: 'actions',
+                        name: '{{ trans('global.actions') }}'
+                    }
+                ],
+                orderCellsTop: true,
+                order: [
+                    [1, 'desc']
+                ],
+                pageLength: 25,
+            };
+            let table = $('.datatable-Appointment').DataTable(dtOverrideGlobals);
+            $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e) {
+                $($.fn.dataTable.tables(true)).DataTable()
+                    .columns.adjust();
+            });
+
+        });
+    </script>
+@endsection

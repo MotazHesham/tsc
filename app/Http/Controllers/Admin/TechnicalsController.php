@@ -30,7 +30,7 @@ class TechnicalsController extends Controller
                 $viewGate      = 'technical_show';
                 $editGate      = 'technical_edit';
                 $deleteGate    = 'technical_delete';
-                $crudRoutePart = 'technicals';
+                $crudRoutePart = 'admin.technicals';
 
                 return view('partials.datatablesActions', compact(
                     'viewGate',
@@ -67,25 +67,41 @@ class TechnicalsController extends Controller
 
     public function store(StoreTechnicalRequest $request)
     {
-        $technical = Technical::create($request->all());
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'approved' => $request->approved,
+            'phone_number' => $request->phone_number,
+            'user_type' => 'technical',
+            'password' => bcrypt($request->password),
+        ]);
+
+        $technical = Technical::create(['user_id'=>$user->id]);
 
         return redirect()->route('admin.technicals.index');
     }
 
     public function edit(Technical $technical)
     {
-        abort_if(Gate::denies('technical_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        abort_if(Gate::denies('technical_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden'); 
 
         $technical->load('user');
 
-        return view('admin.technicals.edit', compact('technical', 'users'));
+        $user = $technical->user;
+
+        return view('admin.technicals.edit', compact('technical','user'));
     }
 
     public function update(UpdateTechnicalRequest $request, Technical $technical)
     {
-        $technical->update($request->all());
+        $user = User::findOrFail($request->user_id);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'approved' => $request->approved,
+            'phone_number' => $request->phone_number, 
+            'password' => $request->password ? bcrypt($request->password) : $user->password,
+        ]);
 
         return redirect()->route('admin.technicals.index');
     }

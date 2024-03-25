@@ -33,16 +33,7 @@
                         </th>
                         <th>
                             {{ trans('cruds.teamWork.fields.photo') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.teamWork.fields.twitter') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.teamWork.fields.linkedin') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.teamWork.fields.facebook') }}
-                        </th>
+                        </th> 
                         <th>
                             &nbsp;
                         </th>
@@ -69,16 +60,7 @@
                                         <img src="{{ $teamWork->photo->getUrl('thumb') }}">
                                     </a>
                                 @endif
-                            </td>
-                            <td>
-                                {{ $teamWork->twitter ?? '' }}
-                            </td>
-                            <td>
-                                {{ $teamWork->linkedin ?? '' }}
-                            </td>
-                            <td>
-                                {{ $teamWork->facebook ?? '' }}
-                            </td>
+                            </td> 
                             <td>
                                 @can('team_work_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.team-works.show', $teamWork->id) }}">

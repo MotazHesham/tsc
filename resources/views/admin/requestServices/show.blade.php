@@ -49,6 +49,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.requestService.fields.place') }}
+                        </th>
+                        <td>
+                            {{ $requestService->place }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.requestService.fields.visiting_form') }}
                         </th>
                         <td>

@@ -48,6 +48,16 @@
                 <span class="help-block">{{ trans('cruds.requestService.fields.message_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="place">{{ trans('cruds.requestService.fields.place') }}</label>
+                <textarea class="form-control {{ $errors->has('place') ? 'is-invalid' : '' }}" name="place" id="place" required>{{ old('place') }}</textarea>
+                @if($errors->has('place'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('place') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.requestService.fields.place_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="visiting_form">{{ trans('cruds.requestService.fields.visiting_form') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('visiting_form') ? 'is-invalid' : '' }}" id="visiting_form-dropzone">
                 </div>

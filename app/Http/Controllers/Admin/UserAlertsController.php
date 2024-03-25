@@ -29,7 +29,7 @@ class UserAlertsController extends Controller
                 $viewGate      = 'user_alert_show';
                 $editGate      = 'user_alert_edit';
                 $deleteGate    = 'user_alert_delete';
-                $crudRoutePart = 'user-alerts';
+                $crudRoutePart = 'admin.user-alerts';
 
                 return view('partials.datatablesActions', compact(
                     'viewGate',

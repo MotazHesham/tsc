@@ -10,7 +10,8 @@ class CreateRequestServicesTable extends Migration
     {
         Schema::create('request_services', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->longText('message');
+            $table->text('place')->nullable();
+            $table->longText('message')->nullable();
             $table->decimal('offer_price', 15, 2)->nullable();
             $table->string('status')->nullable();
             $table->longText('edits')->nullable();

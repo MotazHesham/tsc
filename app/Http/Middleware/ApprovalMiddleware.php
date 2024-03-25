@@ -2,9 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Role;
-use Closure;
-use Illuminate\Support\Facades\Gate;
+use Closure; 
 
 class ApprovalMiddleware
 {

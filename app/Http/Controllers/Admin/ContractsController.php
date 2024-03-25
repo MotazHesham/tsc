@@ -35,7 +35,7 @@ class ContractsController extends Controller
                 $viewGate      = 'contract_show';
                 $editGate      = 'contract_edit';
                 $deleteGate    = 'contract_delete';
-                $crudRoutePart = 'contracts';
+                $crudRoutePart = 'admin.contracts';
 
                 return view('partials.datatablesActions', compact(
                     'viewGate',
@@ -87,7 +87,7 @@ class ContractsController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $request_services = RequestService::pluck('status', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $request_services = RequestService::pluck('place', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.contracts.create', compact('request_services', 'users'));
     }
@@ -113,7 +113,7 @@ class ContractsController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $request_services = RequestService::pluck('status', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $request_services = RequestService::pluck('place', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $contract->load('user', 'request_service');
 

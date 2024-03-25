@@ -14,7 +14,7 @@
                 </a>
             </div>
             <table class="table table-bordered table-striped">
-                <tbody>
+                <tbody> 
                     <tr>
                         <th>
                             {{ trans('cruds.technical.fields.id') }}
@@ -25,10 +25,34 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.technical.fields.user') }}
+                            {{ trans('cruds.user.fields.name') }}
                         </th>
                         <td>
                             {{ $technical->user->name ?? '' }}
+                        </td>
+                    </tr> 
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.email') }}
+                        </th>
+                        <td>
+                            {{ $technical->user->email }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.approved') }}
+                        </th>
+                        <td>
+                            <input type="checkbox" disabled="disabled" {{ $technical->user->approved ? 'checked' : '' }}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.phone_number') }}
+                        </th>
+                        <td>
+                            {{ $technical->user->phone_number }}
                         </td>
                     </tr>
                 </tbody>

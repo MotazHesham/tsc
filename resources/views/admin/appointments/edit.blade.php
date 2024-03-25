@@ -77,42 +77,7 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.appointment.fields.user_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="finish_code">{{ trans('cruds.appointment.fields.finish_code') }}</label>
-                <input class="form-control {{ $errors->has('finish_code') ? 'is-invalid' : '' }}" type="text" name="finish_code" id="finish_code" value="{{ old('finish_code', $appointment->finish_code) }}">
-                @if($errors->has('finish_code'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('finish_code') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.appointment.fields.finish_code_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label>{{ trans('cruds.appointment.fields.status') }}</label>
-                <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
-                    <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\Appointment::STATUS_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('status', $appointment->status) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('status'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('status') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.appointment.fields.status_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="reject_reason">{{ trans('cruds.appointment.fields.reject_reason') }}</label>
-                <textarea class="form-control {{ $errors->has('reject_reason') ? 'is-invalid' : '' }}" name="reject_reason" id="reject_reason">{{ old('reject_reason', $appointment->reject_reason) }}</textarea>
-                @if($errors->has('reject_reason'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('reject_reason') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.appointment.fields.reject_reason_helper') }}</span>
-            </div>
+            </div> 
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}

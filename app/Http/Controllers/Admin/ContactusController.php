@@ -29,7 +29,7 @@ class ContactusController extends Controller
                 $viewGate      = 'contactu_show';
                 $editGate      = 'contactu_edit';
                 $deleteGate    = 'contactu_delete';
-                $crudRoutePart = 'contactus';
+                $crudRoutePart = 'admin.contactus';
 
                 return view('partials.datatablesActions', compact(
                     'viewGate',

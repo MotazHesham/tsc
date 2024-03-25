@@ -31,7 +31,7 @@ class SystemCalendarController extends Controller
 
                 $events[] = [
                     'title' => trim($source['prefix'] . ' ' . $model->{$source['field']} . ' ' . $source['suffix']),
-                    'start' => $crudFieldValue,
+                    'start' => $crudFieldValue . ' ' . $model->getAttributes()['time'],
                     'url'   => route($source['route'], $model->id),
                 ];
             }

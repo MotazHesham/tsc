@@ -10,6 +10,7 @@ use Hash;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -61,18 +62,7 @@ class User extends Authenticatable
     public function getIsAdminAttribute()
     {
         return $this->roles()->where('id', 1)->exists();
-    }
-
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-        self::created(function (self $user) {
-            $registrationRole = config('panel.registration_default_role');
-            if (! $user->roles()->get()->contains($registrationRole)) {
-                $user->roles()->attach($registrationRole);
-            }
-        });
-    }
+    } 
 
     public function userUserAlerts()
     {
@@ -104,5 +94,10 @@ class User extends Authenticatable
     public function setEmailVerifiedAtAttribute($value)
     {
         $this->attributes['email_verified_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
+    }
+
+    public function appointments(): HasManyThrough 
+    {
+        return $this->hasManyThrough(Appointment::class,Contract::class);
     }
 }

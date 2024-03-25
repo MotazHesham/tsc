@@ -343,6 +343,8 @@ return [
             'user_helper'             => ' ',
             'message'                 => 'Message',
             'message_helper'          => ' ',
+            'place'                 => 'Place',
+            'place_helper'          => ' ',
             'visiting_form'           => 'Visiting Form',
             'visiting_form_helper'    => ' ',
             'offer_price_file'        => 'Offer Price File',

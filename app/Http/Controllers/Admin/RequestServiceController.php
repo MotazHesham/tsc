@@ -35,7 +35,7 @@ class RequestServiceController extends Controller
                 $viewGate      = 'request_service_show';
                 $editGate      = 'request_service_edit';
                 $deleteGate    = 'request_service_delete';
-                $crudRoutePart = 'request-services';
+                $crudRoutePart = 'admin.request-services';
 
                 return view('partials.datatablesActions', compact(
                     'viewGate',

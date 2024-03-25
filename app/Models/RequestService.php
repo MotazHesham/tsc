@@ -32,6 +32,7 @@ class RequestService extends Model implements HasMedia
         'service_id',
         'user_id',
         'message',
+        'place',
         'offer_price',
         'status',
         'edits',
@@ -41,10 +42,10 @@ class RequestService extends Model implements HasMedia
     ];
 
     public const STATUS_SELECT = [
+        'pending' => 'قيد الانتظار', 
         'edit'    => 'طلب تعديل',
         'accept'  => 'موافق',
         'refuse'  => 'رفض نهائي',
-        'pending' => 'قيد الانتظار',
     ];
 
     protected function serializeDate(DateTimeInterface $date)

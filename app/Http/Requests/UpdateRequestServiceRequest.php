@@ -16,18 +16,7 @@ class UpdateRequestServiceRequest extends FormRequest
 
     public function rules()
     {
-        return [
-            'service_id' => [
-                'required',
-                'integer',
-            ],
-            'user_id' => [
-                'required',
-                'integer',
-            ],
-            'message' => [
-                'required',
-            ],
+        return [  
         ];
     }
 }

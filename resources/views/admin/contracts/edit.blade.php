@@ -53,7 +53,7 @@
                 <label for="request_service_id">{{ trans('cruds.contract.fields.request_service') }}</label>
                 <select class="form-control select2 {{ $errors->has('request_service') ? 'is-invalid' : '' }}" name="request_service_id" id="request_service_id">
                     @foreach($request_services as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('request_service_id') ? old('request_service_id') : $contract->request_service->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ (old('request_service_id') ? old('request_service_id') : $contract->request_service->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }} @if(!$loop->first) (#{{$id}}) @endif</option>
                     @endforeach
                 </select>
                 @if($errors->has('request_service'))

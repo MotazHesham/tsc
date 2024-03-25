@@ -17,9 +17,20 @@ class StoreTechnicalRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => [
+            'name' => [
+                'string',
                 'required',
-                'integer',
+            ],
+            'email' => [
+                'required',
+                'unique:users',
+            ],
+            'password' => [
+                'required',
+            ],
+            'phone_number' => [
+                'string',
+                'required',
             ],
         ];
     }

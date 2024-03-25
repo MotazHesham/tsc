@@ -13,6 +13,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Str;
 
 class AppointmentsController extends Controller
 {
@@ -31,7 +32,7 @@ class AppointmentsController extends Controller
                 $viewGate      = 'appointment_show';
                 $editGate      = 'appointment_edit';
                 $deleteGate    = 'appointment_delete';
-                $crudRoutePart = 'appointments';
+                $crudRoutePart = 'admin.appointments';
 
                 return view('partials.datatablesActions', compact(
                     'viewGate',
@@ -74,7 +75,7 @@ class AppointmentsController extends Controller
 
         $contracts = Contract::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = User::where('user_type','technical')->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.appointments.create', compact('contracts', 'users'));
     }
@@ -82,6 +83,9 @@ class AppointmentsController extends Controller
     public function store(StoreAppointmentRequest $request)
     {
         $appointment = Appointment::create($request->all());
+
+        $appointment->finish_code = $appointment->id . '-' . Str::random(7);
+        $appointment->save();
 
         return redirect()->route('admin.appointments.index');
     }
@@ -92,7 +96,7 @@ class AppointmentsController extends Controller
 
         $contracts = Contract::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = User::where('user_type','technical')->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $appointment->load('contract', 'user');
 
