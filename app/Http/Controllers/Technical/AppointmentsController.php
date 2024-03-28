@@ -32,7 +32,7 @@ class AppointmentsController extends Controller
                 $deleteGate    = false;
                 $crudRoutePart = 'technical.appointments';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.datatablesActions_t', compact(
                     'viewGate',
                     'editGate',
                     'deleteGate',

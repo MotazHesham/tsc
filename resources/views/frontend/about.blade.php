@@ -122,30 +122,34 @@
         </div>
     </section>
     <!-- Team End -->
-    <!-- Related Service Start -->
-    <section class="relatedService">
-        <div class="container largeContainer">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="serviceITem">
-                        <img src="{{ asset('frontend/assets/images/cert03.jpg') }}">
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="serviceITem">
-                        <img src="{{ asset('frontend/assets/images/cert02.jpg') }}">
+    <!-- Related Service Start --> 
+    
+    <div class="container singleServicePage">
+        <div class="row">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="serviceITem">
-                        <img src="{{ asset('frontend/assets/images/cert01.jpg') }}">
+            <div class="col-md-12 col-lg-12">
+                <div class="widget gallery">
+                    <div class="galleryShots">
 
+                        <div class="row"> 
+                            <div class="col-lg-4 col-md-6">
+                                <a class="popup_img" href="{{ asset('frontend/assets/images/cert03.jpg') }}"><img src="{{ asset('frontend/assets/images/cert03.jpg') }}"
+                                        alt=""></a>  
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <a class="popup_img" href="{{ asset('frontend/assets/images/cert02.jpg') }}"><img src="{{ asset('frontend/assets/images/cert02.jpg') }}"
+                                        alt=""></a>  
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <a class="popup_img" href="{{ asset('frontend/assets/images/cert01.jpg') }}"><img src="{{ asset('frontend/assets/images/cert01.jpg') }}"
+                                        alt=""></a>  
+                            </div>
+                        </div> 
                     </div>
+
                 </div>
             </div>
-
-        </div>
-    </section>
+        </div> 
+    </div> 
     <!-- Related Service End -->
 @endsection

@@ -13,7 +13,7 @@
         <input class="required" type="email" name="email" value="{{ old('email') }}" required placeholder="البريد الالكتروني" />
     </div>
     <div class="input-field col-md-6">
-        <i class="twi-envelope2"></i>
+        <i class="twi-lock2"></i>
         <input class="required" type="password" name="password" required placeholder="كلمة المرور" />
     </div>
     <div class="input-field col-md-6">

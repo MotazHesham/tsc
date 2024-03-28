@@ -136,8 +136,7 @@
         <div class="container largeContainer">
             <div class="row">
                 <div class="col-xl-6">
-                    <div class="appointment_form">
-                        <p>يمكنك الان طلب الخدمات بطريقة سهلة وسريعة</p>
+                    <div class="appointment_form"> 
                         <h3>طلب خدمة</h3>
                         @include('frontend.partials.request-service')
                     </div>

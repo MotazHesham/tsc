@@ -19,7 +19,7 @@ class AppointmentsController extends Controller
     public function index(Request $request)
     { 
         if ($request->ajax()) {
-            $query = Appointment::with(['contract', 'user'])->where('contract_id',Contract::where('user_id',auth()->id())->pluck('id'))->select(sprintf('%s.*', (new Appointment)->table));
+            $query = Appointment::with(['contract', 'user'])->whereIn('contract_id',Contract::where('user_id',auth()->id())->pluck('id'))->select(sprintf('%s.*', (new Appointment)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -31,7 +31,7 @@ class AppointmentsController extends Controller
                 $deleteGate    = false;
                 $crudRoutePart = 'client.appointments';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.datatablesActions_c', compact(
                     'viewGate',
                     'editGate',
                     'deleteGate',

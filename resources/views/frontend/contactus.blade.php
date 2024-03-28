@@ -52,8 +52,7 @@
         <div class="container largeContainer">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="appointment_form">
-                        <p>Your email address will not be published*</p>
+                    <div class="appointment_form"> 
                         <h3>إرسال رسالة</h3>
                         <form action="{{ route('frontend.contactus.store') }}" method="post" class="row" >
                             @csrf

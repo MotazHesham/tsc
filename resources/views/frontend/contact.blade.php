@@ -22,8 +22,7 @@
         <div class="container largeContainer">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="appointment_form">
-                        <p>Your email address will not be published*</p>
+                    <div class="appointment_form"> 
                         <h3> طلب خدمة</h3>
                         @include('frontend.partials.request-service')
                     </div>

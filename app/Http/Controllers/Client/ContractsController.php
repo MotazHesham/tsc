@@ -36,7 +36,7 @@ class ContractsController extends Controller
                 $deleteGate    =  false;
                 $crudRoutePart = 'client.contracts';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.datatablesActions_c', compact(
                     'viewGate',
                     'editGate',
                     'deleteGate',

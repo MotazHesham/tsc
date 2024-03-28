@@ -9,6 +9,7 @@
     <div class="card-body">
         <form method="POST" action="{{ route("admin.request-services.store") }}" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="status" value="pending">
             <div class="form-group">
                 <label class="required" for="service_id">{{ trans('cruds.requestService.fields.service') }}</label>
                 <select class="form-control select2 {{ $errors->has('service') ? 'is-invalid' : '' }}" name="service_id" id="service_id" required>
@@ -80,7 +81,7 @@
                 <span class="help-block">{{ trans('cruds.requestService.fields.offer_price_file_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="offer_price">{{ trans('cruds.requestService.fields.offer_price') }}</label>
+                <label for="offer_price">ارفاق عرض السعر</label>
                 <input class="form-control {{ $errors->has('offer_price') ? 'is-invalid' : '' }}" type="number" name="offer_price" id="offer_price" value="{{ old('offer_price', '') }}" step="0.01">
                 @if($errors->has('offer_price'))
                     <div class="invalid-feedback">
@@ -88,22 +89,7 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.requestService.fields.offer_price_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label>{{ trans('cruds.requestService.fields.status') }}</label>
-                <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
-                    <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\RequestService::STATUS_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('status', 'pending') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('status'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('status') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.requestService.fields.status_helper') }}</span>
-            </div>
+            </div> 
             <div class="form-group">
                 <label for="edits">{{ trans('cruds.requestService.fields.edits') }}</label>
                 <textarea class="form-control {{ $errors->has('edits') ? 'is-invalid' : '' }}" name="edits" id="edits">{{ old('edits') }}</textarea>
